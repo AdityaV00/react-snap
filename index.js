@@ -784,7 +784,6 @@ const run = async (userOptions, { fs } = { fs: nativeFs }) => {
       if (options.asyncScriptTags) await asyncScriptTags({ page });
 
       await page.evaluate(ajaxCache => {
-        console.log(ajaxCache[route]);
         const snapEscape = (() => {
           const UNSAFE_CHARS_REGEXP = /[<>\/\u2028\u2029]/g;
           // Mapping of unsafe HTML and invalid JavaScript line terminator chars to their

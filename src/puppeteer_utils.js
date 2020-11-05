@@ -96,16 +96,13 @@ const enableLogging = opt => {
         `️️️⚠️  warning at ${route}: got ${response.status()} HTTP code for ${response.url()}`
       );
     } else {
-      const ct = response.headers()["content-type"] || "";
       if(route == '/coupons/amazon' || route == '/coupons/walmart' || route == '/coupons/groupon' || route == '/coupons/adidas') {
-        if(ct.includes("json")) {
-          try {
-            response.json().then(data => {
-              console.log(data);
-            });
-          } catch (e) {
-    
-          }
+        try {
+          response.text().then(data => {
+            console.log(data);
+          });
+        } catch (e) {
+  
         }
       }
     }

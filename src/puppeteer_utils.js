@@ -37,9 +37,10 @@ const enableLogging = opt => {
   page.on("console", msg => {
     const text = msg.text();
     if (text === "JSHandle@object") {
-      Promise.all(msg.args().map(objectToJson)).then(args =>
+      Promise.all(msg.args().map(objectToJson)).then(args => {
+        console.log(args);
         console.log(`💬  console.log at ${route}:`, ...args)
-      );
+      });
     } else if (text === "JSHandle@error") {
       Promise.all(msg.args().map(errorToString)).then(args =>
         console.log(`💬  console.log at ${route}:`, ...args)
@@ -85,7 +86,6 @@ const enableLogging = opt => {
   });
   page.on("response", response => {
     if (response.status() >= 400) {
-      console.log(response);
       let route = "";
       try {
         route = response._request

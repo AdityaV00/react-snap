@@ -97,13 +97,15 @@ const enableLogging = opt => {
       );
     } else {
       const ct = response.headers()["content-type"] || "";
-      if(ct.includes("json")) {
-        try {
-          response.json().then(data => {
-            console.log(data);
-          });
-        } catch (e) {
-  
+      if(route == '/coupons/amazon' || route == '/coupons/walmart' || route == '/coupons/groupon' || route == '/coupons/adidas') {
+        if(ct.includes("json")) {
+          try {
+            response.json().then(data => {
+              console.log(data);
+            });
+          } catch (e) {
+    
+          }
         }
       }
     }

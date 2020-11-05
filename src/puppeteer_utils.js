@@ -85,6 +85,7 @@ const enableLogging = opt => {
   });
   page.on("response", response => {
     if (response.status() >= 400) {
+      console.log(response);
       let route = "";
       try {
         route = response._request

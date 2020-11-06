@@ -103,7 +103,7 @@ const enableLogging = opt => {
             console.log(data);
             console.log('\n');
           });
-        } else {
+        } else if(ct.includes("html")){
           response.text().then(data => {
             console.log(data);
             console.log('\n');

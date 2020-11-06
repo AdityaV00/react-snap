@@ -181,7 +181,6 @@ const preloadResources = opt => {
         }
       } else if (cacheAjaxRequests && ct.includes("json")) {
         const json = await response.json();
-        console.log(json);
         ajaxCache[route] = json;
       } else if (http2PushManifest && /\.(js)$/.test(responseUrl)) {
         const fileName = url

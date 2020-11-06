@@ -38,7 +38,6 @@ const enableLogging = opt => {
     const text = msg.text();
     if (text === "JSHandle@object") {
       Promise.all(msg.args().map(objectToJson)).then(args => {
-        console.log(args);
         console.log(`💬  console.log at ${route}:`, ...args)
       });
     } else if (text === "JSHandle@error") {

@@ -97,12 +97,17 @@ const enableLogging = opt => {
       );
     } else {
       if(route == '/coupons/amazon' || route == '/coupons/walmart' || route == '/coupons/groupon' || route == '/coupons/adidas') {
-        try {
+        const ct = response.headers()["content-type"] || "";
+        if(ct.includes("json")) {
+          response.json().then(data => {
+            console.log(data);
+            console.log('\n');
+          });
+        } else {
           response.text().then(data => {
             console.log(data);
+            console.log('\n');
           });
-        } catch (e) {
-  
         }
       }
     }
